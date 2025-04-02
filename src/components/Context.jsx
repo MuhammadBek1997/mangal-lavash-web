@@ -15,7 +15,7 @@ export const AppProvider = ({children}) => {
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
     let navigate = useNavigate()
-    
+     
     let logged
 
     data.restaurants.map(item=>{
@@ -36,11 +36,11 @@ export const AppProvider = ({children}) => {
 
     }
 
-    const handleLogin = (name,pass) =>{
-        let newUser = {
-            name:username,
-            password:password
-        }
+    const handleLogin = () =>{
+        // let newUser = {
+        //     name:username,
+        //     password:password
+        // }
 
         
 
