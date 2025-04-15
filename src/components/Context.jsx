@@ -14,6 +14,9 @@ export const AppProvider = ({children}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [food,setFood] = useState({});
+    const [editName, setEditName] = useState('')
+    const [editPrice, setEditPrice] = useState('')
+    const [ID,setID] = useState('')
     const [order,setOrder] = useState({});
 
         
@@ -112,10 +115,18 @@ export const AppProvider = ({children}) => {
     }
 
 
+    
+    const handleCatchFood = (element)=>{
+        setFood(element)
+        setEditName(element.title)
+        setEditPrice(element.price)
+        setID(element._id)
+    }
+
     // Theme o'zgarishini yangilash
     useEffect(() => {
         handleCatchLogin();
-    }, [data, login]);
+    }, [data,login]);
 
     return (
         <AppContext.Provider value={{
@@ -123,7 +134,8 @@ export const AppProvider = ({children}) => {
             uncheckedIconfile, logo, data, login, setLogin, theme,
             logged, handleLogin, username, setUsername,
             password, setPassword,handleAddFood,handleDeleteFood,
-            handleEditFood,food,setFood
+            handleEditFood,food,setFood,setEditName,setEditPrice,editName,
+            editPrice,handleCatchFood,ID
         }}>
             {children}
         </AppContext.Provider>
