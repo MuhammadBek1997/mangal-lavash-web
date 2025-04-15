@@ -7,6 +7,8 @@ import { UseGlobalContext } from './components/Context';
 import Sidebar from './components/Sidebar';
 import Clientinfo from './pages/Clientinfo';
 import Buy from './pages/Buy';
+import ChangeItem from './pages/ChangeItem';
+import Additem from './pages/Additem';
 
 function App() {
   
@@ -15,11 +17,12 @@ function App() {
   if (logged == false && sessionStorage.getItem("log")) {
     location.reload()
   }
-
+  
+  document.getElementById("root").parentElement.setAttribute("id",theme)
   
 
   return (
-    <div className='App' id={theme}>
+    <div className='App'>
       <Navbar/>
       <div className='bodyBox' style={{
         paddingLeft: logged ? '22%': '0px'
@@ -30,6 +33,8 @@ function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/buy' element={<Buy/>} />
         <Route path='/client' element={<Clientinfo/>} />
+        <Route path='/change' element={<ChangeItem/>} />
+        <Route path='/add' element={<Additem/>} />
       </Routes>
       </div>
      
