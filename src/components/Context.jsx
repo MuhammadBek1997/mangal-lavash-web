@@ -23,6 +23,8 @@ export const AppProvider = ({children}) => {
     let [dark, setDark] = useState(isSystemDark);
     let [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : dark);
     let logo = theme == 'dark' ? '/logo-dark.png' : '/logo_light.png' ;
+    let profile = theme == 'dark' ? '/profilelight.png' : '/profiledark.png' ;
+
         
     
     // Login holatini aniqlash
@@ -128,10 +130,15 @@ export const AppProvider = ({children}) => {
         handleCatchLogin();
     }, [data,login]);
 
+    useEffect(() => {
+        document.body.className = theme === 'dark' ? 'dark' : '';
+      }, [theme]);
+      
+
     return (
         <AppContext.Provider value={{
             toggleTheme, checkedIconfile,
-            uncheckedIconfile, logo, data, login, setLogin, theme,
+            uncheckedIconfile, logo,profile, data, login, setLogin, theme,
             logged, handleLogin, username, setUsername,
             password, setPassword,handleAddFood,handleDeleteFood,
             handleEditFood,food,setFood,setEditName,setEditPrice,editName,
