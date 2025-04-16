@@ -63,7 +63,6 @@ export const AppProvider = ({children}) => {
 
 
     const handleAddFood = async (type,title,price) =>{
-
         try {
             const response = await fetch('https://mangal-backend-production.up.railway.app/api/restaurant/123/add-food',{
                 method: 'POST',
@@ -76,8 +75,6 @@ export const AppProvider = ({children}) => {
                     type:type
                 })
             })
-            
-
             const data = await response.json();
             console.log('Natija:', data);
         } catch (err) {
@@ -88,7 +85,6 @@ export const AppProvider = ({children}) => {
     }
 
     const handleEditFood = async (type,title,price,ID) =>{
-        
         try {
             const response = await fetch(`https://mangal-backend-production.up.railway.app/api/restaurant/123/update-food/${ID}`,{
                 method: 'PUT',
@@ -101,8 +97,6 @@ export const AppProvider = ({children}) => {
                     type:type
                 })
             })
-            
-
             const data = await response.json();
             console.log('Natija:', data);
         } catch (err) {
