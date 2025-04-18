@@ -168,7 +168,44 @@ export const fetchData = {
                         }
                     ]
                 },
-                clients: []
+                clients: [
+                    {
+                        name:"Nodira",
+                        surname:"Aliyeva",
+                        number:"(97)-000-00-00",
+                        gender:"A"
+                    },
+                    {
+                        name:"Nodira",
+                        surname:"Aliyeva",
+                        number:"(97)-000-00-00",
+                        gender:"A"
+                    },
+                    {
+                        name:"Nodira",
+                        surname:"Aliyeva",
+                        number:"(97)-000-00-00",
+                        gender:"A"
+                    },
+                    {
+                        name:"Nodira",
+                        surname:"Aliyeva",
+                        number:"(97)-000-00-00",
+                        gender:"A"
+                    },
+                    {
+                        name:"Nodira",
+                        surname:"Aliyeva",
+                        number:"(97)-000-00-00",
+                        gender:"A"
+                    },
+                    {
+                        name:"Nodira",
+                        surname:"Aliyeva",
+                        number:"(97)-000-00-00",
+                        gender:"A"
+                    },
+                ]
             }
         }
     ]

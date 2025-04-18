@@ -29,10 +29,10 @@ const Navbar = () => {
         onChange={toggleTheme} 
         checked={theme === 'dark'} 
         checkedIcon={checkedIconfile} 
-        uncheckedIcon={uncheckedIconfile} 
+        uncheckedIcon={uncheckedIconfile}                                       
         onColor='#14021b' 
         onHandleColor='#14021b' 
-        offColor='#FFF' 
+        offColor='#fadada' 
         offHandleColor='#fadada' 
       />
       </div>

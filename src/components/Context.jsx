@@ -14,10 +14,15 @@ export const AppProvider = ({children}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [food,setFood] = useState({});
-    const [editName, setEditName] = useState('')
-    const [editPrice, setEditPrice] = useState('')
-    const [ID,setID] = useState('')
+    const [editName, setEditName] = useState('');
+    const [editPrice, setEditPrice] = useState('');
+    const [ID,setID] = useState('');
     const [order,setOrder] = useState({});
+    const [ism, setIsm] = useState("");
+    const [familiya, setFamiliya] = useState("");
+    const [number, setNumber] = useState("");
+    const [gender,setGender] = useState("");
+
 
         
     let [dark, setDark] = useState(isSystemDark);
@@ -136,7 +141,9 @@ export const AppProvider = ({children}) => {
             logged, handleLogin, username, setUsername,
             password, setPassword,handleAddFood,handleDeleteFood,
             handleEditFood,food,setFood,setEditName,setEditPrice,editName,
-            editPrice,handleCatchFood,ID
+            editPrice,handleCatchFood,ID,setIsm,setFamiliya,
+            setNumber,
+            setGender
         }}>
             {children}
         </AppContext.Provider>
