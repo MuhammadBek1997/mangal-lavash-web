@@ -29,6 +29,7 @@ export const AppProvider = ({children}) => {
     let [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : dark);
     let logo = theme == 'dark' ? '/logo-dark.png' : '/logo_light.png' ;
     let profile = theme == 'dark' ? '/profilelight.png' : '/profiledark.png' ;
+    let GenderImg = theme == '' ? '/avatarA.png' : '/avatarE.png' ;
 
         
     
@@ -65,6 +66,9 @@ export const AppProvider = ({children}) => {
     const uncheckedIconfile = (
         <img src="sun.png" alt="" style={{ width: '30px' }} />
     );
+    const Gender = () => {
+        setGender()
+    }
 
 
     const handleAddFood = async (type,title,price) =>{
@@ -111,6 +115,10 @@ export const AppProvider = ({children}) => {
         location.reload()
     }
 
+    const handleEdit = async (name,surname,) =>{
+
+    }
+
     const handleDeleteFood = (ID)=>{
         
     }
@@ -142,8 +150,8 @@ export const AppProvider = ({children}) => {
             password, setPassword,handleAddFood,handleDeleteFood,
             handleEditFood,food,setFood,setEditName,setEditPrice,editName,
             editPrice,handleCatchFood,ID,setIsm,setFamiliya,
-            setNumber,
-            setGender
+            setNumber, setGender
+           
         }}>
             {children}
         </AppContext.Provider>

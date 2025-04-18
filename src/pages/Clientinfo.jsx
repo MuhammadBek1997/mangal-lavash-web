@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import { fetchData } from '../data/data'
+import { UseGlobalContext } from '../components/Context'
 
 const Clientinfo = () => {
-
-function MijozlarApp() {
-  
-  const Clientinfo = processClientInfo(fetchData)
-}
+const {editName,editSurname,editNumber,editGender,setEditName,setEditSurname,setEditNumber,setEditGender} = UseGlobalContext()
+// const {data} = UseGlobalContext()
 
 
 
-<div className='Modal'>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
+
+  return (
+
+    <div className='Clientinfo'>
+
+<div>
+
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -24,7 +25,21 @@ function MijozlarApp() {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        
+        <input type="text" placeholder='Ism' value={editName} onChange={(e)=>setEditName(e.target.value)} />
+        <br />
+        <br />
+        <input type="text" placeholder='Familiya' value={editSurname} onChange={(e)=>setEditSurname(e.target.value)} />
+        <br />
+        <br />
+        <input type="text" placeholder='Telefon raqam' value={editNumber} onChange={(e)=>setEditNumber(e.target.value)} />
+        <select name="" id="">
+          <option value="">
+            Erkak
+          </option>
+          <option value="">
+            Ayol
+          </option>
+        </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -37,15 +52,13 @@ function MijozlarApp() {
 </div>
 
 
-  return (
-
-    <div className='Clientinfo'>
-        <button className='clientinfo-btn'>
-          <img src="/customer.webp" alt="" />
-        </button>
+    <button className='clientinfo-btn' type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <img src="/customer.webp" alt="" />
+    </button>
     </div>
-  )
 
+    
+  )
 
 
 
