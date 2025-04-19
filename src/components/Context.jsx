@@ -106,8 +106,23 @@ export const AppProvider = ({children}) => {
         location.reload()
     }
 
-    const handleDeleteFood = (ID)=>{
-        
+    const handleDeleteFood = async (ID,type)=>{
+        try {
+            const response = await fetch(`https://mangal-backend-production.up.railway.app/api/restaurant/123/delete-food/${ID}`, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ type }) // type ni yuborish shart
+            });
+    
+            const data = await response.json();
+            console.log('O‘chirildi:', data);
+        } catch (error) {
+            console.error('O‘chirishda xatolik:', error);
+        }
+    
+        location.reload()
     }
 
 
@@ -117,6 +132,52 @@ export const AppProvider = ({children}) => {
         setEditName(element.title)
         setEditPrice(element.price)
         setID(element._id)
+    }
+
+
+    const handleAddClient = async (name,bonus,number,address) =>{
+
+        address = {
+            lat:40.26718,
+            long:68.80860
+        }
+
+        try {
+            const response = await fetch('https://mangal-backend-production.up.railway.app/api/restaurant/123/add-client',{
+                method: 'POST',
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    name:name,
+                    number:number,
+                    bonus:bonus,
+                    address:address
+                })
+            })
+            const data = await response.json();
+            console.log('Natija:', data);
+        } catch (err) {
+            console.error('Xatolik:', error);
+        }
+
+    }
+
+
+    const handleDeleteClient = async () =>{
+        try {
+            const response = await fetch(`https://mangal-backend-production.up.railway.app/api/restaurant/123/delete-client/${ID}`, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                } // type ni yuborish shart
+            });
+    
+            const data = await response.json();
+            console.log('O‘chirildi:', data);
+        } catch (error) {
+            console.error('O‘chirishda xatolik:', error);
+        }
     }
 
     // Theme o'zgarishini yangilash
@@ -136,7 +197,7 @@ export const AppProvider = ({children}) => {
             logged, handleLogin, username, setUsername,
             password, setPassword,handleAddFood,handleDeleteFood,
             handleEditFood,food,setFood,setEditName,setEditPrice,editName,
-            editPrice,handleCatchFood,ID
+            editPrice,handleCatchFood,ID,handleAddClient,handleDeleteClient
         }}>
             {children}
         </AppContext.Provider>

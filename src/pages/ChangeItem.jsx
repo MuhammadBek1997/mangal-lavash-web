@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Card from '../components/Card'
 
 const ChangeItem = () => {
-    const {handleEditFood,handleCatchFood,data,setEditName,setEditPrice,editName,editPrice,ID} = UseGlobalContext()
+    const {handleEditFood,handleCatchFood,handleDeleteFood,data,setEditName,setEditPrice,editName,editPrice,ID} = UseGlobalContext()
     const [type,setType] = useState('foods')
     
 
@@ -47,6 +47,7 @@ const ChangeItem = () => {
       <div className="modal-body">
         <input type="text" value={editName} onChange={(e)=>setEditName(e.target.value)} />
         <input type="text" value={editPrice} onChange={(e)=>setEditPrice(e.target.value)} />
+        <button className='btn btn-danger' onClick={()=>handleDeleteFood(ID,type)}>Delete</button>
       </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
