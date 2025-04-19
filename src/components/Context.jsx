@@ -18,14 +18,17 @@ export const AppProvider = ({children}) => {
     const [editPrice, setEditPrice] = useState('')
     const [ID,setID] = useState('')
     const [order,setOrder] = useState({});
-
+    const [userName,setUserName] = useState('');
+    const [userBonus,setUserBonus] = useState('');
+    const [userNumber,setUserNumber] = useState('');
+    const [userAddress,setUserAddress] = useState('')
         
     let [dark, setDark] = useState(isSystemDark);
     let [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : dark);
     let logo = theme == 'dark' ? '/logo-dark.png' : '/logo_light.png' ;
     let profile = theme == 'dark' ? '/profilelight.png' : '/profiledark.png' ;
 
-        
+    
     
     // Login holatini aniqlash
     let logged = sessionStorage.getItem("log") ? sessionStorage.getItem("log") : false;
@@ -180,6 +183,41 @@ export const AppProvider = ({children}) => {
         }
     }
 
+
+    const handleEditClient = async (name,bonus,number,address)=>{
+
+        address = {
+            lat:40.26718,
+            long:68.80860
+        }
+
+        try {
+            const response = await fetch(`https://mangal-backend-production.up.railway.app/api/restaurant/123/update-client/${ID}`,{
+                method: 'PUT',
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    name:name,
+                    bonus:bonus,
+                    number:number,
+                    address:address
+                })
+            })
+            const data = await response.json();
+            console.log('Natija:', data);
+        } catch (err) {
+            console.error('Xatolik:', error);
+        }
+    }
+
+    const handleCatchClient = (element) =>{
+        setID(element?._id)
+        setUserBonus(element?.bonus)
+        setUserName(element?.name)
+        setUserNumber(element?.number)
+    }
+
     // Theme o'zgarishini yangilash
     useEffect(() => {
         handleCatchLogin();
@@ -197,7 +235,9 @@ export const AppProvider = ({children}) => {
             logged, handleLogin, username, setUsername,
             password, setPassword,handleAddFood,handleDeleteFood,
             handleEditFood,food,setFood,setEditName,setEditPrice,editName,
-            editPrice,handleCatchFood,ID,handleAddClient,handleDeleteClient
+            editPrice,handleCatchFood,ID,handleAddClient,handleDeleteClient,
+            handleEditClient,userAddress,userBonus,userName,userNumber,
+            setUserAddress,setUserBonus,setUserName,setUserNumber,handleCatchClient
         }}>
             {children}
         </AppContext.Provider>
