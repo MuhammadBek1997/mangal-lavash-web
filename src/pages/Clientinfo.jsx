@@ -5,12 +5,23 @@ const Clientinfo = () => {
 
   const { data, handleAddClient, handleDeleteClient,handleEditClient,handleCatchClient, userBonus, userName, userNumber, setUserAddress, setUserBonus, setUserName, setUserNumber } = UseGlobalContext()
 
+  if(!data) return (<div>Yuklanmoqda...</div>) 
 
-  console.log(data);
+  const {clients} = data.rest_data
+  console.log(clients);
 
 
   return (
     <div>
+      {clients.map((item)=>{
+        return(
+          <div key={item._id}>
+            {item.name}
+          </div>
+        )
+      })}
+
+
 
 
       <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
