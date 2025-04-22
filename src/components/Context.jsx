@@ -40,17 +40,23 @@ export const AppProvider = ({children}) => {
         }
     };
 
-    const handleLogin = (uname,pass) => {
-        
-        const superAdminData = data.rest_data.superAdmin
-
-        const accessAdmin = true ? uname==superAdminData.login && pass==superAdminData.password : false
-
+    const handleLogin = (uname, pass) => {
+        if (!data || !data.rest_data || !data.rest_data.superAdmin) {
+            alert("Iltimos, tizim yuklanishini kuting...");
+            return;
+        }
+    
+        const superAdminData = data.rest_data.superAdmin;
+        const accessAdmin = uname === superAdminData.login && pass === superAdminData.password;
+    
         if (accessAdmin) {
             sessionStorage.setItem("log", data.id);
             navigate('/');
+        } else {
+            alert("Login yoki parol noto‘g‘ri.");
         }
     };
+    
 
 
     const toggleTheme = () => {
@@ -163,7 +169,7 @@ export const AppProvider = ({children}) => {
         } catch (err) {
             console.error('Xatolik:', error);
         }
-
+        location.reload()
     }
 
 
@@ -181,6 +187,7 @@ export const AppProvider = ({children}) => {
         } catch (error) {
             console.error('O‘chirishda xatolik:', error);
         }
+        location.reload()
     }
 
 
@@ -209,6 +216,8 @@ export const AppProvider = ({children}) => {
         } catch (err) {
             console.error('Xatolik:', error);
         }
+
+        location.reload()
     }
 
     const handleCatchClient = (element) =>{
@@ -231,7 +240,7 @@ export const AppProvider = ({children}) => {
     return (
         <AppContext.Provider value={{
             toggleTheme, checkedIconfile,
-            uncheckedIconfile, logo,profile, data, login, setLogin, theme,
+            uncheckedIconfile, logo,profile, data,loading, login, setLogin, theme,
             logged, handleLogin, username, setUsername,
             password, setPassword,handleAddFood,handleDeleteFood,
             handleEditFood,food,setFood,setEditName,setEditPrice,editName,

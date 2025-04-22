@@ -398,6 +398,26 @@ a {
   color: #888;
 }
 
+
+
+
+.client-info-cont{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.client-card{
+  width: 400px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 0 10px #888;
+  cursor: pointer;
+}
+
+
+
 /* Media Queries */
 @media(max-width: 600px) {
   .login {

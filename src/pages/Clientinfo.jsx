@@ -1,5 +1,6 @@
 import React from 'react'
 import { UseGlobalContext } from '../components/Context'
+import ClientCard from '../components/ClientCard'
 
 const Clientinfo = () => {
 
@@ -12,17 +13,25 @@ const Clientinfo = () => {
 
 
   return (
-    <div>
-      {clients.map((item)=>{
-        return(
-          <div key={item._id}>
-            {item.name}
-          </div>
-        )
-      })}
+    <div className='client-info'>
+      
+      <button onClick={() => handleAddClient("Ism", 15000, "+998990972472")}>
+        Add
+      </button>
+      <button onClick={() => handleDeleteClient()}>
+        Delete
+      </button>
 
-
-
+      
+      <div className='client-info-cont'> 
+        {clients.map((item)=>{
+          return(
+            <div key={item._id} onClick={()=>handleCatchClient(item)}   data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <ClientCard {...item} />
+            </div>
+          )
+        })}
+      </div>
 
       <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div className="modal-dialog">
@@ -45,15 +54,6 @@ const Clientinfo = () => {
       </div>
 
 
-      <button onClick={() => handleAddClient("Ism", 15000, "+998990972472")}>
-        Add
-      </button>
-      <button onClick={() => handleDeleteClient()}>
-        Delete
-      </button>
-      <button onClick={()=>handleCatchClient(data.rest_data.clients[0])}  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Edit
-      </button>
     </div>
   )
 }

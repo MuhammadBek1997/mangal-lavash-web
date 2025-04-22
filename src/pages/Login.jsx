@@ -3,7 +3,9 @@ import { UseGlobalContext } from '../components/Context'
 
 const Login = () => {
 
-    let {username,setUsername,logo,password,setPassword , handleLogin} = UseGlobalContext()
+    let {username,setUsername,logo,password,setPassword , handleLogin,loading} = UseGlobalContext()
+
+    if(loading) return <div>Yuklanmoqda...</div>
 
   return (
       <div className='login'>
