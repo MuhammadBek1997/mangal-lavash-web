@@ -9,6 +9,8 @@ import Clientinfo from './pages/Clientinfo';
 import Buy from './pages/Buy';
 import ChangeItem from './pages/ChangeItem';
 import Additem from './pages/Additem';
+import addClient from './components/addClient';
+import UserCard from './components/userCard';
 
 function App() {
   
@@ -19,6 +21,8 @@ function App() {
   }
   
   document.getElementById("root").parentElement.setAttribute("id",theme)
+  
+
   
 
   return (

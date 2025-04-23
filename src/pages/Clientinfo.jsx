@@ -48,16 +48,18 @@ const {editName,editSurname,editNumber,editGender,setEditName,setEditSurname,set
 </div>
 
 </div>
+      
 
-
-    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-      <img src="/customer.webp" alt="" />
+    <button  type="button" className="clientbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <img src="/add.png" alt="" />
     </button>
     </div>
 
     
   )
-
+//   <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+//   <img src="/customer.webp" alt="" />
+// </button>
 
 
 
