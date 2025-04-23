@@ -5,7 +5,8 @@ const Login = () => {
 
     let {username,setUsername,logo,password,setPassword , handleLogin,loading} = UseGlobalContext()
 
-    if(loading) return <div>Yuklanmoqda...</div>
+    
+    if(loading) return <div><img className='loading-img' src="/loading.gif" alt="" /></div>
 
   return (
       <div className='login'>

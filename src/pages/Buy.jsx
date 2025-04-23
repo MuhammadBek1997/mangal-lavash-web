@@ -6,7 +6,7 @@ const Buy = () => {
   const { data } = UseGlobalContext();
   const [cat,setCat] = useState('all')
 
-  if (!data) return <div>Yuklanmoqda...</div>;
+  if (!data) return <div><img className='loading-img' src="/loading.gif" alt="" /></div>;
 
   const { foods, drinks, sweets } = data.rest_data.data;
 

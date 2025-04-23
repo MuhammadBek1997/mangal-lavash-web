@@ -21,7 +21,8 @@ export const AppProvider = ({children}) => {
     const [userName,setUserName] = useState('');
     const [userBonus,setUserBonus] = useState('');
     const [userNumber,setUserNumber] = useState('');
-    const [userAddress,setUserAddress] = useState('')
+    const [userAddress,setUserAddress] = useState('');
+    const [gender,setGender] = useState('')
         
     let [dark, setDark] = useState(isSystemDark);
     let [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : dark);
@@ -70,6 +71,12 @@ export const AppProvider = ({children}) => {
         <img src="sun.png" alt="" style={{ width: '30px' }} />
     );
 
+    const maleIcon = (
+        <img src="/male.png" alt="" style={{ width: '150px' }} />
+    );
+    const femaleIcon = (
+        <img src="/female.png" alt="" style={{ width: '150px' }} />
+    );
 
     const handleAddFood = async (type,title,price) =>{
         try {
@@ -144,9 +151,9 @@ export const AppProvider = ({children}) => {
     }
 
 
-    const handleAddClient = async (name,bonus,number,address) =>{
+    const handleAddClient = async (name,bonus,number,gender) =>{
 
-        address = {
+        let address = {
             lat:40.26718,
             long:68.80860
         }
@@ -161,6 +168,7 @@ export const AppProvider = ({children}) => {
                     name:name,
                     number:number,
                     bonus:bonus,
+                    gender:gender,
                     address:address
                 })
             })
@@ -173,7 +181,7 @@ export const AppProvider = ({children}) => {
     }
 
 
-    const handleDeleteClient = async () =>{
+    const handleDeleteClient = async (ID) =>{
         try {
             const response = await fetch(`https://mangal-backend-production.up.railway.app/api/restaurant/123/delete-client/${ID}`, {
                 method: 'DELETE',
@@ -225,6 +233,7 @@ export const AppProvider = ({children}) => {
         setUserBonus(element?.bonus)
         setUserName(element?.name)
         setUserNumber(element?.number)
+        setGender(element?.gender)
     }
 
     // Theme o'zgarishini yangilash
@@ -246,7 +255,8 @@ export const AppProvider = ({children}) => {
             handleEditFood,food,setFood,setEditName,setEditPrice,editName,
             editPrice,handleCatchFood,ID,handleAddClient,handleDeleteClient,
             handleEditClient,userAddress,userBonus,userName,userNumber,
-            setUserAddress,setUserBonus,setUserName,setUserNumber,handleCatchClient
+            setUserAddress,setUserBonus,setUserName,setUserNumber,handleCatchClient,
+            maleIcon,femaleIcon,gender,setGender
         }}>
             {children}
         </AppContext.Provider>
