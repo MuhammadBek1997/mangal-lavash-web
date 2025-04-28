@@ -10,15 +10,12 @@ const Buy = () => {
 
   const { foods, drinks, sweets } = data.rest_data.data;
 
-  
-
   console.log(data);
   
-
   return (
     <div className="buy-page">
       
-        <select name="" id="" className="" onChange={(e)=>setCat(e.target.value)} >
+        <select name="" id="" className='selectType' onChange={(e)=>setCat(e.target.value)} >
           <option value="all">
             Barcha taomlar
           </option>

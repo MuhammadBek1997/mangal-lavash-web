@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react'  
+import React, { useEffect, useState } from 'react'  
 import ReactSwitch from 'react-switch'
 import { UseGlobalContext } from './Context'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
 
+  const [hideMenu,setHideMenu] = useState(true)
   let {toggleTheme, theme, checkedIconfile, uncheckedIconfile, logo,profile} = UseGlobalContext()
+
+  const NavbarMenu = hideMenu ? "Hided" : "Showed"
+
 
   useEffect(() => {
     localStorage.setItem("theme", theme)
@@ -18,9 +22,20 @@ const Navbar = () => {
         <Link to={'/'}>
           <img src={logo} alt="Logo" className="navbar-logo" />
         </Link>
-        <button className="navbar-profile">
+        <button className="navbar-profile" onClick={()=>setHideMenu(!hideMenu)}>
           <img src={profile} alt="" />
         </button>
+        <div className='profile-menu' id={NavbarMenu} >
+            <Link to={'/'}>
+              Settings
+            </Link>
+            <button onClick={()=>{
+          sessionStorage.removeItem("log")
+          location.reload()
+          }} className='logoutBtn-navbar'> 
+          Log out
+        </button>
+        </div>
       </div>
       
       {/* Theme switch */}

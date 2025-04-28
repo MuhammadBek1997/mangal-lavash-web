@@ -12,11 +12,16 @@ const Clientinfo = () => {
 
   const { clients } = data.rest_data;
 
+  const showAdding = ()=>{
+    setHideAdd(!hideAdd)
+    setUserName("")
+    setUserNumber("")
+  }
 
 
   return (
     <div className='client-info'>
-      <button className={hideAdd ? 'btn btn-info' : 'btn btn-danger'} onClick={() => setHideAdd(!hideAdd)} style={{ width: '180px'}}>
+      <button className={hideAdd ? 'btn btn-info' : 'btn btn-danger'} onClick={() =>showAdding()} style={{ width: '180px'}}>
         <p className='add-plus'>
           {hideAdd ? "Qo'shish menusi": "x"}
         </p>
@@ -24,7 +29,7 @@ const Clientinfo = () => {
       <div className="client-add-box" id={hidden}>
             <input type="text" value={userName} onChange={(e)=>setUserName(e.target.value)}  required />
             <input type="text" value={userNumber}  onChange={(e)=>setUserNumber(e.target.value)}  required />
-            <select  onChange={(e)=>setGender(e.target.value)} required>
+            <select onChange={(e)=>setGender(e.target.value)} required>
               <option value="male">
                 Jinsni tanlang
               </option>

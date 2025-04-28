@@ -19,10 +19,10 @@ const ClientCard = ({name,number,bonus,gender,_id}) => {
                 {number}
             </h3>
             <button className='btn btn-warning' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Edit
+                O'zgartirish
             </button>
             <button className='btn btn-danger' onClick={()=>handleDeleteClient(_id)}>
-                Delete
+                O'chirish
             </button>
 
         </div>
