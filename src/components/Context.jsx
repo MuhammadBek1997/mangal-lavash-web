@@ -2,6 +2,23 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "./useFetch";
 
+const defaultColors = {
+    dark: {
+      onColor: '#14021b',
+      onHandleColor: '#14021b',
+      background: '#1a1a1a',
+      text: '#f0f0f0'
+    },
+    light: {
+      offColor: '#ffffff',
+      offHandleColor: '#fadada',
+      background: '#ffffff',
+      text: '#000000'
+    }
+}
+  
+
+
 export const AppContext = createContext();
 
 export const AppProvider = ({children}) => {
@@ -23,14 +40,22 @@ export const AppProvider = ({children}) => {
     const [userNumber,setUserNumber] = useState('');
     const [userAddress,setUserAddress] = useState('');
     const [gender,setGender] = useState('')
-        
+    
+    
     let [dark, setDark] = useState(isSystemDark);
     let [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : dark);
     let logo = theme == 'dark' ? '/logo-dark.png' : '/logo_light.png' ;
     let profile = theme == 'dark' ? '/profilelight.png' : '/profiledark.png' ;
-
+    const [colors, setColors] = useState(() => {
+        const saved = localStorage.getItem("colors")
+        return saved ? JSON.parse(saved) : defaultColors
+    })
+    const [newColors, setNewColors] = useState(colors)    
     
-    
+      const toggleTheme = () => {
+        setTheme(prev => (prev === "light" ? "dark" : "light"))
+      }
+      
     // Login holatini aniqlash
     let logged = sessionStorage.getItem("log") ? sessionStorage.getItem("log") : false;
     
@@ -58,11 +83,6 @@ export const AppProvider = ({children}) => {
         }
     };
     
-
-
-    const toggleTheme = () => {
-        setTheme(curr => curr === 'light' ? 'dark' : 'light');
-    };
 
     const checkedIconfile = (
         <img src="moon.png" alt="" style={{ width: '30px' }} />
@@ -243,7 +263,9 @@ export const AppProvider = ({children}) => {
 
     useEffect(() => {
         document.body.className = theme === 'dark' ? 'dark' : '';
-      }, [theme]);
+        localStorage.setItem("theme", theme)
+        localStorage.setItem("colors", JSON.stringify(colors))
+      }, [theme,colors]);
       
 
     return (
@@ -256,7 +278,7 @@ export const AppProvider = ({children}) => {
             editPrice,handleCatchFood,ID,handleAddClient,handleDeleteClient,
             handleEditClient,userAddress,userBonus,userName,userNumber,
             setUserAddress,setUserBonus,setUserName,setUserNumber,handleCatchClient,
-            maleIcon,femaleIcon,gender,setGender
+            maleIcon,femaleIcon,gender,setGender,colors,setColors,newColors, setNewColors
         }}>
             {children}
         </AppContext.Provider>

@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
 
   const [hideMenu,setHideMenu] = useState(true)
-  let {toggleTheme, theme, checkedIconfile, uncheckedIconfile, logo,profile} = UseGlobalContext()
+  let { toggleTheme, theme, checkedIconfile, uncheckedIconfile, logo, profile, colors } = UseGlobalContext()
+
 
   const NavbarMenu = hideMenu ? "Hided" : "Showed"
 
@@ -26,7 +27,7 @@ const Navbar = () => {
           <img src={profile} alt="" />
         </button>
         <div className='profile-menu' id={NavbarMenu} >
-            <Link to={'/'}>
+            <Link to={'/settings'}>
               Settings
             </Link>
             <button onClick={()=>{
@@ -45,11 +46,12 @@ const Navbar = () => {
         checked={theme === 'dark'} 
         checkedIcon={checkedIconfile} 
         uncheckedIcon={uncheckedIconfile} 
-        onColor='#14021b' 
-        onHandleColor='#14021b' 
-        offColor='#FFF' 
-        offHandleColor='#fadada' 
+        onColor={colors.dark.onColor}
+        onHandleColor={colors.dark.onHandleColor}
+        offColor={colors.light.offColor}
+        offHandleColor={colors.light.offHandleColor}
       />
+
       </div>
     </div>
   )

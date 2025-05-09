@@ -22,6 +22,9 @@ const Sidebar = () => {
           <Link to={'/client'} className='sidebar-list-item'>
             Mijozlar
           </Link>
+          <Link to={'/settings'} className='sidebar-list-item'>
+            Sozlamalar
+          </Link>
         </div>
 
         <button onClick={()=>{
