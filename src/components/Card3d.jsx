@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-
+import { UseGlobalContext } from './Context';
 
 
 const Container = styled("div")(() => ({
@@ -40,7 +40,7 @@ const Container = styled("div")(() => ({
   }));
   
   const CardContent = styled("div")(() => ({
-    top: "50%",
+    top: "10%",
     position: "absolute",
     left: 0,
     width: "100%",
@@ -57,28 +57,76 @@ const Container = styled("div")(() => ({
     background: "linear-gradient(to bottom, rgba(0,0,0,0) 20%,rgba(0,0,0,.8) 90%)"
   }));
 
+  const backBtn = styled("button")(()=>({
+    width: "50px",
+  height: "50px",
+  backgroundColor: "red",
+  borderRadius: "12px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  fontSize: "xx-large",
+  color: "white",
+  }))
+
 
 
 const Card3d = () => {
     const [flip, setFlip] = useState(false);
 
+const {maleIcon} = UseGlobalContext()
+
+
+
   return (
     <div>
         <h1>3D Card</h1>
       <Container>
-        <Card
-          onMouseEnter={() => setFlip(true)}
-          onMouseLeave={() => setFlip(false)}
-        >
+        <Card>
           <CardFront flip={flip}>
-            <CardContent>
-              <h1>Front</h1>
+            <CardContent
+          onClick={() => setFlip(true)}
+        >
+               <div>
+            {maleIcon}
+            <h2>
+                Name
+            </h2>
+            <h3>
+                Number
+            </h3>
+            
+
+        </div>
             </CardContent>
             <BGFade />
           </CardFront>
           <CardBack flip={flip}>
+            <button className='backCloseBtn' onClick={()=>setFlip(false)}>
+              X
+            </button>
             <CardContent>
-              <h1>Back</h1>
+              <div>
+            {maleIcon}
+            <h2>
+                Name
+            </h2>
+            <h3>
+                Number
+            </h3>
+            <button className='btn btn-warning' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                O'zgartirish
+            </button>
+            <button className='btn btn-danger'>
+                O'chirish
+            </button>
+
+        </div>
+        <div className='bonus-box'>
+            <h4>
+                Bonus
+            </h4>
+        </div>
             </CardContent>
           </CardBack>
         </Card>
