@@ -40,6 +40,7 @@ const Container = styled("div")(() => ({
   }));
   
   const CardContent = styled("div")(() => ({
+    height:"100%",
     top: "10%",
     position: "absolute",
     left: 0,
@@ -57,17 +58,6 @@ const Container = styled("div")(() => ({
     background: "linear-gradient(to bottom, rgba(0,0,0,0) 20%,rgba(0,0,0,.8) 90%)"
   }));
 
-  const backBtn = styled("button")(()=>({
-    width: "50px",
-  height: "50px",
-  backgroundColor: "red",
-  borderRadius: "12px",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  fontSize: "xx-large",
-  color: "white",
-  }))
 
 
 

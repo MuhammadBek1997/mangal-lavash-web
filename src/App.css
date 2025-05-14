@@ -563,6 +563,7 @@ a {
   transform-style: preserve-3d;
   position: absolute;
   right: 0;
+  border: none;
 }
 /* Media Queries */
 @media(max-width: 600px) {
